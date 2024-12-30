@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapp Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: Verdana, sans-serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            height: 100vh;
+            background: url('https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG5tJgvQ5e0zR1JPjBnSOg6u0o-oAEopDfLn5Y_N3oVi2eCdBtKCmM99notrJk3v3bOUd-jpQmyKUQRpLw1ihKP1Y0ouxYEDtcDJs4jNF1b53yh_LZnEQ6_0jMwYbxaPZ4qcZOk3bg_pji5PjErLFEWa5lp4ZGKBw0V9Sep_-6o3tcl7O45TeZag4wH7o-xonh9kVfsUegLSKbRvIxE9Lgrd-peDa9QantPia8ilRrZFWifQnYUuMvyGGCO2XzDCSj4Ub7drQucUik3Ucqj3AioYyKvZMbPQuawdkSpwMd-iQ/9b8a2084164bd276550dcbd25590a52e.png') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #6e6c6c;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #6e6c6c;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .hero a {
+            padding: 0.8rem 2rem;
+            background: #040404;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: background 0.3s;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+        }
+
+        .hero a:hover {
+            background: #d35400;
+        }
+
+        .news {
+            padding: 4rem 2rem;
+            background: #f4f4f4;
+        }
+
+        .news h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #000;
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .news p {
+            font-size: 1rem;
+            color: #666;
+            text-align: center;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .news-item p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .news-item a {
+            color: #f39c12;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+
+        .about {
+            padding: 4rem 2rem;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #000;
+            font-weight: bold;
+            text-decoration: underline;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .about p {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #555;
+            padding-left: 100px;
+            text-align: left;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+        }
+
+        .about img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-content,
+        .member-content {
+            display: none;
+            margin-top: 1rem;
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #message-toggle:checked~.message-content {
+            display: block;
+        }
+
+        #member-toggle:checked~.member-content {
+            display: block;
+        }
+
+        .services {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #000;
+            text-decoration: underline;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service {
+            background: #f4f4f4;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .service i {
+            font-size: 3rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: "ヒラギノ明朝 ProN", "游明朝", "MS P明朝", serif;
+        }
+
+        .service p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .modal-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .close-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f39c12;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #d35400;
+        }
+
+        #hero-message-modal:checked~#hero-message-modal-content {
+            display: flex;
+        }
+
+        #message-modal:checked~#message-modal-content,
+        #member-modal:checked~#member-modal-content {
+            display: flex;
+        }
+
+        #contact-modal:checked ~ #contact-modal-content {
+            display: flex;
+        }
+
+        .about label {
+            display: block; /* 縦並びにする */
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-radius: 0; /* 四角形にする */
+            transition: background 0.3s;
+            cursor: pointer;
+            width: 200px; /* ボタンの横幅を指定 */
+            text-align: center; /* テキストを中央揃え */
+        }
+        
+       
+
+    </style>
+</head>    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Sapp</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li>
+                    <input type="checkbox" id="contact-modal" style="display: none;">
+                    <label for="contact-modal" style="color: #fff; text-decoration: none; font-size: 1.2rem; cursor: pointer;">Contact</label>
+                </li>
+
+                <div class="modal" id="contact-modal-content">
+                    <div class="modal-content">
+                        <p>ご連絡ありがとうございます！近日中にお返事します。</p>
+                        <label for="contact-modal" class="close-btn">閉じる</label>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div>
+            <h1>未来を学びで創る</h1>
+            <p>私たちSappは、教育の力で社会を変えることを目指します</p>
+            <!-- 企業メッセージ用チェックボックス -->
+            <input type="checkbox" id="hero-message-modal" style="display: none;">
+            <label for="hero-message-modal" style="padding: 0.8rem 2rem; background: #040404; color: #fff; text-decoration: none; font-size: 1.8rem; font-family: 'ヒラギノ明朝 ProN', '游明朝', 'MS P明朝', serif; cursor: pointer;">企業メッセージ</label>
+
+<!-- モーダル内容 -->
+        <div class="modal" id="hero-message-modal-content">
+            <div class="modal-content">
+                <p>私たちSappは、学びをもっと楽しく、もっと効果的にするために生まれた企業です。
+                    現役京都大学生である私たち3人は、自らの学びの経験を活かしながら、教育の可能性を広げるためのアプリケーションを開発しています。<br/>
+                    
+                    私たちが目指すのは、単なる学習ツールの提供ではありません。子どもたちや学習者が「未来を創る力」を手に入れるための環境を築くことです。そのために、塾や教育現場と深く連携し、現実のニーズに応えるソリューションを共に作り上げています。<br/>
+                    
+                    Sappの使命は、教育を通じて世界をより良い場所に変えること。<br/>
+                    その第一歩として、日本中の子どもたちが自分の可能性を信じ、挑戦できる未来をサポートしていきます。<br/>
+                    
+                    学びの中で未来を変える力を信じるすべての人とともに、私たちは歩み続けます。</p>
+                <label for="hero-message-modal" class="close-btn">閉じる</label>
+            </div>
+        </div>
+</div>
+
+        </div>
+    </section
+    <section class="news">
+        <h2>News</h2>
+        <p>ニュース</p>
+        
+        <div class="news-container">
+            <div class="news-item">
+                <h3>News Title 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="news-item">
+                <h3>News Title 2</h3>
+                <p>Proin vel arcu a lorem consectetur consequat vel sed nunc.</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="news-item">
+                <h3>News Title 3</h3>
+                <p>Integer eget sem nec odio vehicula fermentum.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <h2>About us</h2>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div style="flex: 2;">
+                <p>未来を学びで創る、京大生発の挑戦</p>
+                <p style="font-size: 1.2rem; margin-top: 1rem; color: #555; text-align: left; padding-left: 100px; font-family: 'ヒラギノ明朝 ProN', '游明朝', 'MS P明朝', serif;padding-right: 5px; letter-spacing: 0.3rem;">
+                    Sappは、現役京都大学生3人によって設立された、教育の未来を切り拓く企業です。<br/>
+                    私たちは最先端のテクノロジーと教育理論を融合させ、学ぶ楽しさと成果を両立させる革新的なアプリケーションを開発しています。
+                </p>
+            </div>
+            <div style="flex: 1; text-align: center; padding-right: 100px; margin-top: 20px;">
+                <input type="checkbox" id="message-modal" style="display: none;">
+                <label for="message-modal" style="display: block; padding: 1rem 2rem; background: #000; color: #fff; text-decoration: none; margin-bottom: 1rem; font-size: 1.2rem; border-radius: 0; transition: background 0.3s; cursor: pointer;">企業メッセージ</label>
+                 
+                <!-- モーダル内容（企業メッセージ） -->
+                <div class="modal" id="message-modal-content">
+                    <div class="modal-content">
+                        <p>私たちSappは、学びをもっと楽しく、もっと効果的にするために生まれた企業です。
+                            現役京都大学生である私たち3人は、自らの学びの経験を活かしながら、教育の可能性を広げるためのアプリケーションを開発しています。<br/>
+                            
+                            私たちが目指すのは、単なる学習ツールの提供ではありません。子どもたちや学習者が「未来を創る力」を手に入れるための環境を築くことです。そのために、塾や教育現場と深く連携し、現実のニーズに応えるソリューションを共に作り上げています。<br/>
+                            
+                            Sappの使命は、教育を通じて世界をより良い場所に変えること。<br/>
+                            その第一歩として、日本中の子どもたちが自分の可能性を信じ、挑戦できる未来をサポートしていきます。<br/>
+                            
+                            学びの中で未来を変える力を信じるすべての人とともに、私たちは歩み続けます。</p>
+                        <label for="message-modal" class="close-btn">閉じる</label>
+                    </div>
+                </div>
+            
+                <input type="checkbox" id="member-modal" style="display: none;">
+                <label for="member-modal" style="display: block; padding: 1rem 2rem; background: #333; color: #fff; text-decoration: none; font-size: 1.2rem; border-radius: 0; transition: background 0.3s; cursor: pointer;">メンバー</label>
+                
+                <!-- モーダル内容（メンバー紹介） -->
+                <div class="modal" id="member-modal-content">
+                    <div class="modal-content">
+                        <p>メンバー: <br/>鈴木天(Suzuki Ten)<br/>河内宏輔(Kawachi Kosuke)<br/>江本涌(Emoto Yuu)</p>
+                        <label for="member-modal" class="close-btn">閉じる</label>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+                
+                
+            </div>
+            
+            
+        </div>
+    </section>
+            
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-container">
+            <div class="service">
+                <i class="fas fa-bullhorn"></i>
+                <h3>塾との連携</h3>
+                <p>塾との連携により、学習の効率を向上させます。</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-lightbulb"></i>
+                <h3>学校との連携</h3>
+                <p>学校との連携により、学習の効率を向上させます。</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-chart-pie"></i>
+                <h3>個人サービス</h3>
+                <p>個人との契約も承ります。</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Sapp | All Rights Reserved</p>
+    </footer>
+  
+</body>
+</html>
+
+
